@@ -6,7 +6,7 @@ import Sidebar from './Sidebar';
 import Feed from './Feed';
 import Widgets from './Widgets';
 
-const user = ""
+const user = "kik"
 function App() {
   return (
     <div className="app">
