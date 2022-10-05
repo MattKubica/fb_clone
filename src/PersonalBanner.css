@@ -25,6 +25,7 @@
 .personalBanner__avatar{
     margin: 20px 20px 10px 20px;
     border: 2px solid #4599ff;
+    cursor: pointer;
 }
 .personalBanner__info>h3{
     margin-left: 20px;

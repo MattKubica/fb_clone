@@ -1,33 +1,41 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import "./Feed.css"
 import StoryReel from './StoryReel'
 import MessageSender from './MessageSender'
 import Post from './Post'
-import HeroList from './HeroList'
+import { getPosts,db } from './firebase'
+import { collection, doc, onSnapshot } from 'firebase/firestore'
+
 
 function Feed() {
+//  const [posts,setPosts] = useState([]); 
+const postsResult =  getPosts(db).then(post => console.log(post[1].message));
+
+/*useEffect(() =>{
+    onSnapshot(collection(db,"posts"),(snapshot) => (
+     setPosts(snapshot.docs.map((doc => ({id: doc.id, data: doc.data() })))
+     )
+    ))
+   },[])
+
+   */
   return (
     <div className='feed'>
-        <StoryReel/>
+          <StoryReel/>
         <MessageSender/>
+      {posts.map((item) =>(
         <Post
-        message="Whats new ? "
-        image="https://th.bing.com/th/id/OIP.hDX2VnhEx_ki-XjHTwDGfQHaE7?pid=ImgDet&rs=1"
-        username={HeroList.id1.firstName +" "+ HeroList.id1.lastName}
-        
+        key={item.id}
+        profilePic={item.profilePic}
+        message={item.message}
+        timestamp={item.timestamp}
+        username={item.username}
+        image={item.image}
         />
-        <Post 
-        message="360 no scope is nuts"
-        image="https://th.bing.com/th/id/OIP.6DXq5Jb2ebw7ZpQdOo6YcQHaHa?pid=ImgDet&rs=1"
-        username={HeroList.id2.firstName + " " + HeroList.id2.lastName}/>
-        <Post 
-        message="I guess my train is late AF"
-        image="https://th.bing.com/th/id/R.de8394bc513de919c8e5d26b03096c68?rik=KJxC1lfR6t94eA&pid=ImgRaw&r=0"
-        username={HeroList.id3.firstName + " " + HeroList.id3.lastName}/>
+        ))}
 
 
-    </div>
+        </div>
   )
 }
-
 export default Feed

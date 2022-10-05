@@ -6,17 +6,18 @@ import FlagRoundedIcon from '@mui/icons-material/FlagRounded';
 import SubscriptionsRoundedIcon from '@mui/icons-material/SubscriptionsRounded';
 import AddShoppingCartRoundedIcon from '@mui/icons-material/AddShoppingCartRounded';
 import PublicRoundedIcon from '@mui/icons-material/PublicRounded';
-import { IconButton } from "@mui/material"
+import { Avatar, IconButton } from "@mui/material"
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import ForumRoundedIcon from '@mui/icons-material/ForumRounded';
 import NotificationImportantRoundedIcon from '@mui/icons-material/NotificationImportantRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import SidebarRow from "./SidebarRow";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
-import Profile from "./Profile";
+import { useStateValue } from "./StateProvider";
 
 
 function Header(){
+    const [{ user }, dispatch] =useStateValue();
     return<div className="header">
     <div className="header__left">
         <div className="header__logo">
@@ -47,7 +48,8 @@ function Header(){
     </div>
     <div className="header__right">
         <div className="header__info">
-        <Profile/>
+        <Avatar src={user.photoURL}/>
+        <h4>{user.displayName}</h4>
         </div>
 
         <IconButton>

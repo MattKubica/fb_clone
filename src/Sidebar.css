@@ -2,3 +2,13 @@
     padding: 25px 10px;
     flex: 0.33;
 }
+.sidebar__user__field{
+    display: flex;
+    margin: 10px;
+    font-size: large;
+    align-items: center;
+}
+
+.sidebar__user__field>h4{
+    margin: 15px;
+}

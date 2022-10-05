@@ -7,13 +7,18 @@ import LocalPharmacyRoundedIcon from '@mui/icons-material/LocalPharmacyRounded';
 import React from 'react'
 import "./Sidebar.css"
 import SidebarRow from './SidebarRow'
-import Profile from './Profile';
 import PersonalBanner from './PersonalBanner';
+import { Avatar } from '@mui/material';
+import { useStateValue } from "./StateProvider";
 
 function Sidebar() {
+  const [{user}, dispatch] = useStateValue();
   return (
     <div className='sidebar'>
-        <Profile/>
+      <div className='sidebar__user__field'>
+        <Avatar src={user.photoURL}/>
+          <h4>{user.displayName}</h4>
+          </div>
         <SidebarRow Icon={LocalPharmacyRoundedIcon} title="COVID-19 Information"/>
         <SidebarRow Icon={FlagRounded} title="Pages"/>
         <SidebarRow Icon={PeopleRoundedIcon} title="Friends"/>

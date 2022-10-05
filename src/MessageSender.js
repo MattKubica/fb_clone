@@ -4,9 +4,10 @@ import "./MessageSender.css"
 import VideoCameraFrontRoundedIcon from '@mui/icons-material/VideoCameraFrontRounded';
 import PhotoSizeSelectActualRoundedIcon from '@mui/icons-material/PhotoSizeSelectActualRounded';
 import AddReactionRoundedIcon from '@mui/icons-material/AddReactionRounded';
-import HeroList from './HeroList.js';
+import {useStateValue} from "./StateProvider"
 
 function MessageSender() {
+  const [{ user }, dispatch] =useStateValue();
   const [input, setInput] = useState("")
   const [imageUrl, setImageUrl] =useState("")
 
@@ -20,13 +21,13 @@ function MessageSender() {
   return (
     <div className='messageSender'>
         <div className='messageSender__top'>
-            <Avatar src={HeroList.id1.profilePicture}/>
+            <Avatar src={user.photoURL}/>
             <form>
             <input 
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="messageSender__input" 
-            placeholder={`What’s On Your Mind`} 
+            placeholder={`What’s On Your Mind,${user.displayName}`} 
             type="text"></input>
             <input 
             value={imageUrl}

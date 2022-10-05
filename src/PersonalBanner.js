@@ -1,6 +1,5 @@
 import { Avatar } from '@mui/material'
 import React from 'react'
-import HeroList from './HeroList'
 import "./PersonalBanner.css"
 
 
@@ -20,11 +19,11 @@ function Hyperlink(){
             </div>
             <div className="personalBanner__info">
                 <Avatar className='personalBanner__avatar'
-                src={HeroList.id1.profilePicture}
-                />
+                onClick={Hyperlink}
+                src='https://media-exp1.licdn.com/dms/image/C4E03AQHBdNrjYzPQAQ/profile-displayphoto-shrink_800_800/0/1663952505469?e=1669248000&v=beta&t=fS0HGmA4LcB5lFHhDNN2WfG1dnab6YzjLekmruprUOQ'                />
                 <h3>Matúš Kubica</h3>
                 <div className="underName">
-                <p>{HeroList.id1.proffesion}</p>
+                <p>Junior</p>
                 <p>Front-End Developer</p>
                 </div>
                     <button className="personalBanner__button"
