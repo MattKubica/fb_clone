@@ -8,32 +8,34 @@ import { collection, doc, onSnapshot } from 'firebase/firestore'
 
 
 function Feed() {
-//  const [posts,setPosts] = useState([]); 
-const postsResult =  getPosts(db).then(post => console.log(post[1].message));
+const [posts,setPosts] = useState([]); 
+const [newPosts,setNewPosts] = useState([]); 
 
-/*useEffect(() =>{
+const postsResult =  getPosts(db).then(post => console.log(post[1]));
+useEffect(() =>{
     onSnapshot(collection(db,"posts"),(snapshot) => (
-     setPosts(snapshot.docs.map((doc => ({id: doc.id, data: doc.data() })))
+     setPosts(snapshot.docs.map((post => ({id: post.id, data: post.data() })))
      )
     ))
    },[])
+   /*
+   {posts.map((item) =>(
+     <Post
+     key={item.id}
+     profilePic={item.profilePic}
+     message={item.message}
+     timestamp={item.timestamp}
+     username={item.username}
+     image={item.image}
+     />
+     ))}
 
    */
   return (
     <div className='feed'>
           <StoryReel/>
         <MessageSender/>
-      {posts.map((item) =>(
-        <Post
-        key={item.id}
-        profilePic={item.profilePic}
-        message={item.message}
-        timestamp={item.timestamp}
-        username={item.username}
-        image={item.image}
-        />
-        ))}
-
+        <Post/>
 
         </div>
   )

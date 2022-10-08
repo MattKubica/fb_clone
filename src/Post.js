@@ -6,7 +6,6 @@ import CommentRoundedIcon from '@mui/icons-material/CommentRounded';
 import SendRoundedIcon from '@mui/icons-material/SendRounded';
 import ExpandMoreRoundedIcon from '@mui/icons-material/ExpandMoreRounded';
 import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
-
 function Post({profilePicture,image,username,timestamp,message}) {
 
   return (

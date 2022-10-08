@@ -5,6 +5,9 @@ import VideoCameraFrontRoundedIcon from '@mui/icons-material/VideoCameraFrontRou
 import PhotoSizeSelectActualRoundedIcon from '@mui/icons-material/PhotoSizeSelectActualRounded';
 import AddReactionRoundedIcon from '@mui/icons-material/AddReactionRounded';
 import {useStateValue} from "./StateProvider"
+import {db} from "./firebase"
+import firebase from 'firebase/compat/app';
+
 
 function MessageSender() {
   const [{ user }, dispatch] =useStateValue();
@@ -13,10 +16,18 @@ function MessageSender() {
 
     const handleSubmit = e =>{
         e.preventDefault();
+
+        db.collection("posts").add({
+          message:input,
+          timestamp: firebase.firestore.fieldValue.serverTimestamp(),
+            profilePic: user.photoURL,
+            username: user.displayName,
+            image: imageUrl,
+        })
+
         setInput("")
         setImageUrl("")
     }
-
 
   return (
     <div className='messageSender'>
